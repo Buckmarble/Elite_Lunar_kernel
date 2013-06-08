@@ -135,9 +135,8 @@ static int msm_cpufreq_target(struct cpufreq_policy *policy,
 	int ret = -EFAULT;
 	int index;
 	struct cpufreq_frequency_table *table;
-#ifdef CONFIG_SMP
+
 	struct cpufreq_work_struct *cpu_work = NULL;
-#endif
 
 	mutex_lock(&per_cpu(cpufreq_suspend, policy->cpu).suspend_mutex);
 
