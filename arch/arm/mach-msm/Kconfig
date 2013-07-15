@@ -1758,6 +1758,12 @@ config GPU_OVERCLOCK
 	help
 	  Krait 600 GPU overclocking 
 
+config CPU_OVERCLOCK
+	bool "Enable CPU Overclocking option"
+	default n
+	help
+	  Krait overclocking up to 2.1 GHz
+
 config LOW_CPUCLOCKS
 	bool "Enable ultra low CPU clocks"
 	default n
