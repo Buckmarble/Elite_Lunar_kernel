@@ -1,7 +1,8 @@
 ui_print("");
 ui_print("");
 
-ui_print("Elite Vzw m7 AOSP kernel");
+ui_print("Welcome To Lunar kernel");
+ui_print("By Buckmarble and Brymaster5000");
 ui_print("");
 ui_print("");
 ui_print("mounting system");
