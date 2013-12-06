@@ -76,8 +76,12 @@ int cpuidle_play_dead(void)
 {
 	struct cpuidle_device *dev = __this_cpu_read(cpuidle_devices);
 	struct cpuidle_driver *drv = cpuidle_get_driver();
+<<<<<<< HEAD
 	int i, dead_state = -1;
 	int power_usage = INT_MAX;
+=======
+	int i;
+>>>>>>> aa8a457... build fixes
 
 	if (!drv)
 		return -ENODEV;
