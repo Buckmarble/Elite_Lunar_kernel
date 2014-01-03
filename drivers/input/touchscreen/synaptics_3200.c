@@ -2783,6 +2783,7 @@ static int report_htc_logo_area(int x, int y) {
 	return 0;
 }
 
+<<<<<<< HEAD
 
 static cputime64_t prev_time;
 static int prev_x = 0, prev_y = 0;
@@ -2792,6 +2793,47 @@ static void reset_dt2w(void)
         prev_time = 0;
         prev_x = 0;
         prev_y = 0;
+=======
+static void dt2w_func(int x, int y) {
+
+	int delta_x = 0;
+	int delta_y = 0;
+
+	if (dt2w_switch == 1 && y < 2100)
+		return;
+
+	if (x < 150 || x > 1470)
+		return;
+
+        dt2w_time[1] = dt2w_time[0];
+        dt2w_time[0] = jiffies;
+
+	dt2w_x[1] = dt2w_x[0];
+        dt2w_x[0] = x;
+	dt2w_y[1] = dt2w_y[0];
+        dt2w_y[0] = y;
+
+	delta_x = (dt2w_x[0]-dt2w_x[1]);
+	delta_y = (dt2w_y[0]-dt2w_y[1]);
+
+//	printk(KERN_INFO "x=%d y=%d\n", dt2w_x[0], dt2w_y[0]);
+
+        if (scr_suspended) {
+		if (
+			y < 2880
+			&& ((dt2w_time[0]-dt2w_time[1]) < DT2W_TIMEOUT_MAX)
+			&& (abs(delta_x) < DT2W_DELTA)
+			&& (abs(delta_y) < DT2W_DELTA)
+		) {
+                       // printk("[DT2W]: OFF->ON\n");
+			dt2w_time[0] = 0;
+			dt2w_time[1] = 0;
+                        sweep2wake_pwrtrigger();
+			wakesleep_vib = 1;
+		}
+	}
+        return;
+>>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
 }
 
 static void dt2w_func(int x, int y, cputime64_t trigger_time)
@@ -2991,6 +3033,7 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 		}
 
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+<<<<<<< HEAD
      if (((ts->finger_count > 0)?1:0) == 0) {
 
 	if (scr_suspended == true) {
@@ -3004,6 +3047,11 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 			reset_sh2w();
 		}
 	}
+=======
+     if ((((ts->finger_count > 0)?1:0) == 0) && scr_suspended == true && dt2w_switch > 0) { 
+		dt2w_func(last_touch_position_x, last_touch_position_y);
+     }
+>>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
 
         if (l2m_switch || l2w_switch || gestures_switch) { 
 
@@ -4398,7 +4446,11 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 	printk(KERN_INFO "[TP] %s: enter\n", __func__);
 
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
+<<<<<<< HEAD
 	if (s2w_switch == 1 || dt2w_switch > 0 || su2w_switch || l2w_switch || gestures_switch) {
+=======
+	if (s2w_switch == 1 || dt2w_switch > 0 || l2w_switch == 1) {
+>>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
 		//screen off, enable_irq_wake
 		enable_irq_wake(client->irq);
 	}
@@ -4637,7 +4689,11 @@ static int synaptics_ts_resume(struct i2c_client *client)
 
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE  
         //screen on, disable_irq_wake
+<<<<<<< HEAD
 	if (s2w_switch == 1 || dt2w_switch || su2w_switch || l2w_switch || gestures_switch)
+=======
+	if (s2w_switch == 1 || dt2w_switch > 0 || l2w_switch == 1)
+>>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
 		disable_irq_wake(client->irq);
 
         if ((s2w_switch == 2 || s2w_switch == 0) && !dt2w_switch && !su2w_switch && !l2w_switch && !gestures_switch) {
