@@ -59,10 +59,6 @@ static int boost_adjust_notify(struct notifier_block *nb, unsigned long val, voi
 	if (val != CPUFREQ_ADJUST)
 		return NOTIFY_OK;
 
-	/* just in case someone underclocks below input_boost_freq */
-	if (boost_freq_buf > policy->max)
-		boost_freq_buf = policy->max;
-
 	pr_debug("CPU%u policy min before boost: %u kHz\n",
 		 cpu, policy->min);
 	pr_debug("CPU%u boost min: %u kHz\n", cpu, boost_freq_buf);
@@ -160,6 +156,7 @@ static void boost_input_disconnect(struct input_handle *handle)
 {
 	input_close_device(handle);
 	input_unregister_handle(handle);
+	destroy_workqueue(input_boost_wq);
 	kfree(handle);
 }
 
@@ -172,11 +169,6 @@ static const struct input_device_id boost_ids[] = {
 		.absbit = { [BIT_WORD(ABS_MT_POSITION_X)] =
 				BIT_MASK(ABS_MT_POSITION_X) |
 				BIT_MASK(ABS_MT_POSITION_Y) },
-	},
-	/* Keypad */
-	{
-		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
-		.evbit = { BIT_MASK(EV_KEY) },
 	},
 	{ },
 };
