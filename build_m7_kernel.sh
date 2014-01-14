@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to build your kernel
-  k=~/kernel/android_kernel_htc_m7
+  k=~/kernel/elite_lunar_aosp
 # Directory for the any kernel updater
   t=$k/packages
 # Date to add to zip
@@ -39,7 +39,7 @@ find ./ -name '*~' | xargs rm
 # rm compile.log
 
 # make kernel
-make 'cyanogenmod_m7_defconfig'
+make 'elite_m7_defconfig'
 make -j`grep 'processor' /proc/cpuinfo | wc -l` CROSS_COMPILE=$TOOLCHAIN #>> compile.log 2>&1 || exit -1
 
 # Grab modules & zImage
