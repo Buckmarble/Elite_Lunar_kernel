@@ -182,7 +182,5 @@ enum {
 extern void sweep2wake_setdev(struct input_dev * input_device);
 #endif
 
-extern uint8_t touchscreen_is_on(void);  
-
 extern uint8_t getPowerKeyState(void);
 #endif 
