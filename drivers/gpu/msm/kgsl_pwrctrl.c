@@ -1004,8 +1004,6 @@ int kgsl_pwrctrl_init(struct kgsl_device *device)
 		pwr->pwrlevels[i].io_fraction =
 			pdata->pwrlevel[i].io_fraction;
 	}
-	if (strstr(device->name, "kgsl-3d") != NULL)
-		set_gpu_clk(pwr->pwrlevels[0].gpu_freq);
 	
 	if (pwr->pwrlevels[0].gpu_freq > 0)
 		clk_set_rate(pwr->grp_clks[0], pwr->
