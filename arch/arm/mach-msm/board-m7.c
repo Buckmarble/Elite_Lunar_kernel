@@ -3807,14 +3807,14 @@ static struct platform_device msm_tsens_device = {
 
 static struct msm_thermal_data msm_thermal_pdata = {
 	.sensor_id = 0,
-	.poll_ms = 1000,
+/*	.poll_ms = 1000,
 #ifdef CONFIG_CPU_OVERCLOCK
 	.limit_temp = 75,
 #else
 	.limit_temp = 51,
 #endif
 	.temp_hysteresis = 10,
-	.limit_freq = 918000,
+	.limit_freq = 918000,*/
 };
 
 #define MSM_SHARED_RAM_PHYS 0x80000000
