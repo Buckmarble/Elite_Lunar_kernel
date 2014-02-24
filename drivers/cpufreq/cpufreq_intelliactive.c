@@ -73,7 +73,8 @@ static unsigned int hispeed_freq;
 static unsigned long go_hispeed_load = DEFAULT_GO_HISPEED_LOAD;
 
 /* Sampling down factor to be applied to min_sample_time at max freq */
-static unsigned int sampling_down_factor;
+#define DEFAULT_SAMPLING_DOWN_FACTOR 4
+static unsigned int sampling_down_factor = DEFAULT_SAMPLING_DOWN_FACTOR;
 
 /* Target load.  Lower values result in higher CPU speeds. */
 #define DEFAULT_TARGET_LOAD 90
@@ -132,9 +133,9 @@ static bool io_is_busy = 1;
  */
 static unsigned int up_threshold_any_cpu_load = 95;
 static unsigned int sync_freq = 702000;
-static unsigned int up_threshold_any_cpu_freq = 1350000;
+static unsigned int up_threshold_any_cpu_freq = 1134000;
 
-static int two_phase_freq_array[NR_CPUS] = {[0 ... NR_CPUS-1] = 1566000} ;
+static int two_phase_freq_array[NR_CPUS] = {[0 ... NR_CPUS-1] = 1350000} ;
 
 static int cpufreq_governor_intelliactive(struct cpufreq_policy *policy,
 		unsigned int event);
