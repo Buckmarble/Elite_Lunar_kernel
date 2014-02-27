@@ -1,2 +1,2 @@
-cp arch/arm/boot/zImage ../Lunar_kk/packages
-find . -name "*.ko" -exec cp {} ../Lunar_kk/packages \;
+cp arch/arm/boot/zImage ../Elite_Lunar_kernel/packages
+find . -name "*.ko" -exec cp {} ../Elite_Lunar_kernel/packages \;
