@@ -27,7 +27,8 @@
   m=$k/out/$c/system/lib/modules
   z=$c-$today
 
-TOOLCHAIN=/home/forrest/kernel/arm-eabi-4.7/bin/arm-eabi-
+TOOLCHAIN=/home/forrest/kernel/linaro-4.8.3/bin/arm-eabi-
+
 export ARCH=arm
 export SUBARCH=arm
 
