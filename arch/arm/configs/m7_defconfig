@@ -1945,6 +1945,7 @@ CONFIG_HTC_BATT_8960=y
 # CONFIG_HTC_ONMODE_CHARGING is not set
 CONFIG_HTC_OFFMODE_ALARM=y
 CONFIG_HTC_QUICKBOOT_OFFMODE_ALARM=y
+CONFIG_DUTY_CYCLE_LIMIT=y
 #
 # fd operation monitor mechanism
 #
@@ -3263,7 +3264,7 @@ CONFIG_ASYNC_FSYNC=y
 #       CONFIG_EXFAT_FS should be modified with project code name to prevent conflict with other projects
 #
 CONFIG_EXFAT_FS=m
-CONFIG_EXFAT_PATH="texfat_m7wlv"
+CONFIG_EXFAT_PATH="texfat_m7"
 CONFIG_EXFAT_VERSION="target/htc.d/htc-3013.6.27"
 
 #
