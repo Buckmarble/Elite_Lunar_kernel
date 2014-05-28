@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to build your kernel
-  k=~/kernel/Elite_Lunar_kernel
+  k=~/kernel/Elite_Lunar_kernelAOSP
 # Directory for the any kernel updater
   t=$k/packages
 # Date to add to zip
