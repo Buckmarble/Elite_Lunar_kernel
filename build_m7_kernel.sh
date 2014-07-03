@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to build your kernel
-  k=~/kernel/gpe443_stock
+  k=~/kernel/gpe443
 # Directory for the any kernel updater
   t=$k/packages
 # Date to add to zip
