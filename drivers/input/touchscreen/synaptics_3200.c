@@ -2543,8 +2543,11 @@ static int report_htc_logo_area(int x, int y) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 267b00f... Revert "fullscreen/halfscreen option and make it more sensitive"
 
 static cputime64_t prev_time;
 static int prev_x = 0, prev_y = 0;
@@ -2554,6 +2557,7 @@ static void reset_dt2w(void)
         prev_time = 0;
         prev_x = 0;
         prev_y = 0;
+<<<<<<< HEAD
 =======
 >>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
 static void dt2w_func(int x, int y) {
@@ -2611,6 +2615,8 @@ static void dt2w_func(int x, int y) {
 =======
 >>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
 >>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
+=======
+>>>>>>> 267b00f... Revert "fullscreen/halfscreen option and make it more sensitive"
 }
 
 #endif 
@@ -2777,11 +2783,14 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 <<<<<<< HEAD
+<<<<<<< HEAD
      if ((((ts->finger_count > 0)?1:0) == 0) && scr_suspended == true && dt2w_switch == 1) { 
 		dt2w_func(last_touch_position_x, last_touch_position_y);
      }
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 267b00f... Revert "fullscreen/halfscreen option and make it more sensitive"
      if (((ts->finger_count > 0)?1:0) == 0) {
 
 	if (scr_suspended == true) {
@@ -2795,12 +2804,15 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 			reset_sh2w();
 		}
 	}
+<<<<<<< HEAD
 =======
      if ((((ts->finger_count > 0)?1:0) == 0) && scr_suspended == true && dt2w_switch > 0) { 
 		dt2w_func(last_touch_position_x, last_touch_position_y);
      }
 >>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
 >>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
+=======
+>>>>>>> 267b00f... Revert "fullscreen/halfscreen option and make it more sensitive"
 
      if ((((ts->finger_count > 0)?1:0) == 0) && ((l2m_switch == 1) || (l2w_switch == 1))) { 
 
@@ -4177,6 +4189,7 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (s2w_switch == 1 || dt2w_switch == 1 || l2w_switch == 1) {
 =======
 <<<<<<< HEAD
@@ -4185,6 +4198,9 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 	if (s2w_switch == 1 || dt2w_switch > 0 || l2w_switch == 1) {
 >>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
 >>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
+=======
+	if (s2w_switch == 1 || dt2w_switch > 0 || su2w_switch || l2w_switch || gestures_switch) {
+>>>>>>> 267b00f... Revert "fullscreen/halfscreen option and make it more sensitive"
 		//screen off, enable_irq_wake
 		enable_irq_wake(client->irq);
 	}
@@ -4422,6 +4438,7 @@ static int synaptics_ts_resume(struct i2c_client *client)
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE  
         //screen on, disable_irq_wake
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (s2w_switch == 1 || dt2w_switch == 1 || l2w_switch == 1)
 =======
 <<<<<<< HEAD
@@ -4430,6 +4447,9 @@ static int synaptics_ts_resume(struct i2c_client *client)
 	if (s2w_switch == 1 || dt2w_switch > 0 || l2w_switch == 1)
 >>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
 >>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
+=======
+	if (s2w_switch == 1 || dt2w_switch || su2w_switch || l2w_switch || gestures_switch)
+>>>>>>> 267b00f... Revert "fullscreen/halfscreen option and make it more sensitive"
 		disable_irq_wake(client->irq);
 
         if ((s2w_switch == 2 || s2w_switch == 0) && dt2w_switch == 0 && l2w_switch == 0) {
