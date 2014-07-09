@@ -2542,34 +2542,11 @@ static int report_htc_logo_area(int x, int y) {
 	return 0;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-static cputime64_t prev_time;
-static int prev_x = 0, prev_y = 0;
-
-static void reset_dt2w(void)
-{
-        prev_time = 0;
-        prev_x = 0;
-        prev_y = 0;
-=======
->>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
 static void dt2w_func(int x, int y) {
 
 	int delta_x = 0;
 	int delta_y = 0;
 
-<<<<<<< HEAD
-=======
-	if (dt2w_switch == 1 && y < 2100)
-		return;
-
-	if (x < 150 || x > 1470)
-		return;
-
->>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
         dt2w_time[1] = dt2w_time[0];
         dt2w_time[0] = jiffies;
 
@@ -2585,19 +2562,12 @@ static void dt2w_func(int x, int y) {
 
         if (scr_suspended) {
 		if (
-<<<<<<< HEAD
 		y < 2880
 		&& x > 150 && x < 1470
 		&& ((dt2w_time[0]-dt2w_time[1]) > DT2W_TIMEOUT_MIN)
 		&& ((dt2w_time[0]-dt2w_time[1]) < DT2W_TIMEOUT_MAX)
 		&& (abs(delta_x) < DT2W_DELTA)
 		&& (abs(delta_y) < DT2W_DELTA)
-=======
-			y < 2880
-			&& ((dt2w_time[0]-dt2w_time[1]) < DT2W_TIMEOUT_MAX)
-			&& (abs(delta_x) < DT2W_DELTA)
-			&& (abs(delta_y) < DT2W_DELTA)
->>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
 		) {
                        // printk("[DT2W]: OFF->ON\n");
 			dt2w_time[0] = 0;
@@ -2607,10 +2577,6 @@ static void dt2w_func(int x, int y) {
 		}
 	}
         return;
-<<<<<<< HEAD
-=======
->>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
->>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
 }
 
 #endif 
@@ -2776,31 +2742,9 @@ static void synaptics_ts_finger_func(struct synaptics_ts_data *ts)
 		}
 
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
-<<<<<<< HEAD
      if ((((ts->finger_count > 0)?1:0) == 0) && scr_suspended == true && dt2w_switch == 1) { 
 		dt2w_func(last_touch_position_x, last_touch_position_y);
      }
-=======
-<<<<<<< HEAD
-     if (((ts->finger_count > 0)?1:0) == 0) {
-
-	if (scr_suspended == true) {
-		if (dt2w_switch > 0 || gestures_switch) { 
-			dt_trigger_time = ktime_to_ms(ktime_get());
-			dt2w_func(last_touch_position_x, last_touch_position_y, dt_trigger_time);
-		}
-
-		if (gestures_switch || su2w_switch) {
-			reset_sv2w();
-			reset_sh2w();
-		}
-	}
-=======
-     if ((((ts->finger_count > 0)?1:0) == 0) && scr_suspended == true && dt2w_switch > 0) { 
-		dt2w_func(last_touch_position_x, last_touch_position_y);
-     }
->>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
->>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
 
      if ((((ts->finger_count > 0)?1:0) == 0) && ((l2m_switch == 1) || (l2w_switch == 1))) { 
 
@@ -4176,15 +4120,7 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 	printk(KERN_INFO "[TP] %s: enter\n", __func__);
 
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE
-<<<<<<< HEAD
 	if (s2w_switch == 1 || dt2w_switch == 1 || l2w_switch == 1) {
-=======
-<<<<<<< HEAD
-	if (s2w_switch == 1 || dt2w_switch > 0 || su2w_switch || l2w_switch || gestures_switch) {
-=======
-	if (s2w_switch == 1 || dt2w_switch > 0 || l2w_switch == 1) {
->>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
->>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
 		//screen off, enable_irq_wake
 		enable_irq_wake(client->irq);
 	}
@@ -4421,15 +4357,7 @@ static int synaptics_ts_resume(struct i2c_client *client)
 
 #ifdef CONFIG_TOUCHSCREEN_SYNAPTICS_SWEEP2WAKE  
         //screen on, disable_irq_wake
-<<<<<<< HEAD
 	if (s2w_switch == 1 || dt2w_switch == 1 || l2w_switch == 1)
-=======
-<<<<<<< HEAD
-	if (s2w_switch == 1 || dt2w_switch || su2w_switch || l2w_switch || gestures_switch)
-=======
-	if (s2w_switch == 1 || dt2w_switch > 0 || l2w_switch == 1)
->>>>>>> 3ca1004... fullscreen/halfscreen option and make it more sensitive
->>>>>>> 80b6075... fullscreen/halfscreen option and make it more sensitive
 		disable_irq_wake(client->irq);
 
         if ((s2w_switch == 2 || s2w_switch == 0) && dt2w_switch == 0 && l2w_switch == 0) {
